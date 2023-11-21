@@ -1,0 +1,19 @@
+pipeline{
+	agent any
+	tools{
+		maven 'maven'
+	}
+	stages {
+		stage('checkout scm'){
+			steps{
+				git branch: 'main',
+					url: 'https://github.com/SatishKumarBV/sample.git'
+			}
+		}
+		stage('build'){
+			steps{
+				sh 'mvn clean package'
+			}
+	    }
+    }
+}
